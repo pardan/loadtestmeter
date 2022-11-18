@@ -1,6 +1,8 @@
 import mysql.connector
 from mysql.connector import Error
 
+#test
+
 def koneksi():
     try:
         connection = mysql.connector.connect(host='202.50.203.104',
