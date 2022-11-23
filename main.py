@@ -84,7 +84,9 @@ def app():
 	db.close()
 	
 	put_select('nowo', label='No. WO', options=datawo)
-	put_input('tgldari', type=DATE, label='From)')
+	put_select('equ2', label='Equipment', options=dataequ)
+	put_select('tipe2', label='Tipe Motor', options=datatipe)
+	put_input('tgldari', type=DATE, label='From')
 	put_input('tglsampai', type=DATE, label='To')
 
 	def convert(kapan):
@@ -101,7 +103,24 @@ def app():
 			b=convert(pin.tglsampai)
 
 			c22emd = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=10" width="900" height="400" frameborder="0"></iframe></center>'
-			put_html(c22emd)
+			c22emf = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=12" width="900" height="400" frameborder="0"></iframe></center>'
+			c23emd = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=14" width="900" height="400" frameborder="0"></iframe></center>'
+			c23emf = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=16" width="900" height="400" frameborder="0"></iframe></center>'
+			rf22emd = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=4" width="900" height="400" frameborder="0"></iframe></center>'
+			rf22emf = f'<center><iframe src="http://202.50.203.104:3000/d-solo/p70WmA7Vk/new-dashboard?orgId=1&var-wo={pin.nowo}&from={a}&to={b}&theme=light&panelId=8" width="900" height="400" frameborder="0"></iframe></center>'
+
+			if ((pin.equ2 == 'C22') and (pin.tipe2 == 'Electric Motor-Drive')):
+				put_html(c22emd)
+			if ((pin.equ2 == 'C22') and (pin.tipe2 == 'Electric Motor-Fan')):
+				put_html(c22emf)
+			if ((pin.equ2 == 'C23') and (pin.tipe2 == 'Electric Motor-Drive')):
+				put_html(c23emd)
+			if ((pin.equ2 == 'C23') and (pin.tipe2 == 'Electric Motor-Fan')):
+				put_html(c23emf)
+			if ((pin.equ2 == 'RF 22') and (pin.tipe2 == 'Electric Motor-Drive')):
+				put_html(rf22emd)
+			if ((pin.equ2 == 'RF 22') and (pin.tipe2 == 'Electric Motor-Fan')):
+				put_html(rf22emf)
 
 	put_buttons(['Submit'], onclick=[submit])
 
